@@ -150,6 +150,48 @@
           <li class="text-gray-700"><span class="font-bold text-indigo-600">12.</span> Jika berhasil, akan muncul keterangan <span class="font-mono bg-gray-100 text-green-600 px-1 rounded">Product activation successful</span>.</li>
           <li class="text-gray-700"><span class="font-bold text-indigo-600">13.</span> Terakhir, tutup jendela CMD karena aktivasi Office sudah selesai.</li>
         </ul>
+        <h2 class="text-center my-2 font-bold text-2xl text-slate-600">Menonaktifkan Microsoft Defender Menggunakan CMD</h2>
+        <ul class="mx-auto text-left max-w-3xl bg-white shadow-md rounded-lg p-6 space-y-4">
+          <li class="text-gray-700">
+            <span class="font-bold text-indigo-600">1.</span> Tekan tombol <span class="font-mono bg-gray-100 text-purple-600 px-1 rounded">Windows + X</span>, lalu pilih
+            <span class="font-mono bg-gray-100 text-purple-600 px-1 rounded">Terminal (Admin)</span> dari menu yang muncul.
+          </li>
+          <li class="text-gray-700">
+            <span class="font-bold text-indigo-600">2.</span> Salin dan tempel perintah berikut ke dalam Windows Terminal, lalu tekan <span class="font-bold text-green-600">Enter</span>:
+            <pre class="font-mono bg-gray-100 text-red-600 p-2 rounded mt-2 text-wrap">
+    reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender" /v DisableAntiSpyware /t REG_DWORD /d 1 /f
+    </pre
+            >
+          </li>
+          <li class="text-gray-700"><span class="font-bold text-indigo-600">3.</span> Anda akan melihat pesan konfirmasi. Setelah itu, tutup Windows Terminal dan restart komputer agar perubahan berlaku.</li>
+          <li class="text-gray-700">
+            <span class="font-bold text-indigo-600">4.</span> Jika Anda ingin mengembalikan pengaturan dan menghapus nilai registri yang telah dibuat, gunakan perintah berikut untuk menghapus kunci registri:
+            <pre class="font-mono bg-gray-100 text-red-600 p-2 rounded mt-2 text-wrap">
+    reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender" /v DisableAntiSpyware /f
+    </pre
+            >
+          </li>
+        </ul>
+        <h2 class="text-center my-2 font-bold text-2xl text-slate-600">Cara Memeriksa Apakah Microsoft Defender Aktif</h2>
+        <ul class="mx-auto text-left max-w-3xl bg-white shadow-md rounded-lg p-6 space-y-4">
+          <li class="text-gray-700">
+            <span class="font-bold text-indigo-600">1.</span> Tekan tombol <span class="font-mono bg-gray-100 text-purple-600 px-1 rounded">Windows + X</span> atau klik kanan ikon Windows di taskbar, lalu pilih
+            <span class="font-mono bg-gray-100 text-purple-600 px-1 rounded">Terminal</span>.
+          </li>
+          <li class="text-gray-700">
+            <span class="font-bold text-indigo-600">2.</span> Ketikkan perintah berikut di dalam Terminal, lalu tekan <span class="font-bold text-green-600">Enter</span>:
+            <pre class="font-mono bg-gray-100 text-red-600 p-2 rounded mt-2">
+    Get-MpComputerStatus | select AMRunningMode
+    </pre
+            >
+          </li>
+          <li class="text-gray-700">
+            <span class="font-bold text-indigo-600">3.</span> Periksa hasilnya di tabel. Jika status menunjukkan <span class="font-mono bg-gray-100 text-red-600 px-1 rounded">NotRunning</span>, berarti Microsoft Defender tidak aktif. Namun,
+            jika status menunjukkan <span class="font-mono bg-gray-100 text-green-600 px-1 rounded">Normal</span>, berarti layanan masih aktif.
+          </li>
+        </ul>
+
+        <!-- Akhir Konten -->
       </div>
 
       <!-- Footer -->
